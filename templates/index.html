@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stackoverflow question tag prediction </title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <font color=" #154360">
+    <h1>Stackoverflow question tag prediction</h1></font>
+    <form method="post" action="/">
+        <label for="question"style="font-size: 18px;">Enter your question:</label>
+        <input type="text" id="question" name="question" required value="{{ request.form['question'] if request.method == 'POST' else '' }}" style="width: 80%; font-size: 16px;">
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if predictions %}
+     <font color=" #154360">
+    <h2>Predicted Tags:</h2></font>
+    <ul><font color="#5b2c6f">
+        {% for prediction in predictions %}
+        <li>{{ prediction.class }} - Probability: {{ prediction.probability }}</li>
+        {% endfor %}</font>
+    </ul>
+    {% endif %}
+</body>
+</html>
