@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+ <style> 
+    div {
+      border-radius: 5px;
+      background-color: #f2f2f2;
+      padding: 20px;
+        }
+    </style>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,13 +18,16 @@
         }
     </style>
 </head>
+
 <body>
+   <div>
     <font color=" #154360">
     <h1>Stackoverflow question tag prediction</h1></font>
     <form method="post" action="/">
-        <label for="question"style="font-size: 18px;">Enter your question:</label>
-        <input type="text" id="question" name="question" required value="{{ request.form['question'] if request.method == 'POST' else '' }}" style="width: 80%; font-size: 16px;">
-        <button type="submit">Predict</button>
+        <label for="question"style="font-size: 16px;">Enter your question:</label>
+        <input type="text" id="question" name="question" required value="{{ request.form['question'] if request.method == 'POST' else '' }}" 
+                                                                  style="width: 80%; font-size: 16px; padding: 24px 20px;border: 1px solid; border-radius: 4px;box-sizing: border-box;">
+        <button type="submit" style="background-color: #45a049; border-radius: 4px; font-size: 16px;">Predict</button>
     </form>
 
     {% if predictions %}
@@ -29,5 +39,6 @@
         {% endfor %}</font>
     </ul>
     {% endif %}
+    </div>
 </body>
 </html>
