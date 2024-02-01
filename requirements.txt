@@ -54,7 +54,7 @@ databricks-cli==0.18.0
 dbus-python==1.2.16
 debugpy==1.6.7.post1
 decorator==4.4.2
-defer==1.0.6
+defer>=1.0,<2.0
 defusedxml==0.6.0
 dill==0.3.7
 distlib==0.3.4
