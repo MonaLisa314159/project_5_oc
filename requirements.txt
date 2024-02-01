@@ -37,7 +37,7 @@ cloudpathlib==0.16.0
 cloudpickle==2.2.1
 colorama==0.4.3
 comm==0.1.4
-command-not-found==0.3
+#command-not-found==0.3
 confection==0.1.4
 contourpy==1.0.5
 contractions==0.1.73
