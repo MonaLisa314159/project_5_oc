@@ -12,6 +12,7 @@ import torch
 import transformers
 from transformers import BertTokenizer 
 import joblib 
+import logging
 
 # Charger le modèle et le tokenizer
 class BERTClass(torch.nn.Module):
