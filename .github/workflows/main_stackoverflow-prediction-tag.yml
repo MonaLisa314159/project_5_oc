@@ -66,4 +66,4 @@ jobs:
         with:
           app-name: 'stackoverflow-prediction-tag'
           slot-name: 'Production'
-          publish-profile: ${{ AZUREAPPSERVICE_PUBLISHPROFILE }}
+          publish-profile: ${{ AZURE_WEBAPP_PUBLISH_PROFILE }}
