@@ -35,12 +35,17 @@ model.eval()
 
 tokenizer = BertTokenizer.from_pretrained('bert_tokenizer', map_location=torch.device('cpu'))  # Charger le tokenizer depuis le fichier
 
-# Chargez mlb à partir du fichier
+# Charger mlb à partir du fichier
 mlb = joblib.load('mlb_model.joblib')
+
+# Configurer la journalisation
+logging.basicConfig(filename='app.log', level=logging.DEBUG)
+
 
 def create_app():
     my_app = Flask(__name__, template_folder='templates')
     my_app.secret_key = "314159265**"
+    
     @my_app.route('/', methods=['GET', 'POST'])
     def home():
         predictions = None
@@ -51,6 +56,9 @@ def create_app():
         elif request.method == 'POST':
             # Si le formulaire est soumis, récupérer la question
             question = request.form['question']
+            
+            # Ajout des journaux pour suivre l'exécution
+            logging.info(f"Received question: {question}")
             
             # Stocker la question dans la session Flask
             session['question'] = question
