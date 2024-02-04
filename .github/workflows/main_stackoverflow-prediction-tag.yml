@@ -63,6 +63,9 @@ jobs:
       - name: Check Disk Space
         run: df -h
 
+      - name: Check Disk Space in /tmp
+        run: df -h /tmp
+
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
