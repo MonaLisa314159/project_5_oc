@@ -8,7 +8,7 @@ Created on Sun Jan 28 19:28:51 2024
 
 # Fichier test_app.py utilisant Pytest
 import pytest
-from app import create_app 
+from application import create_app 
 from flask.testing import FlaskClient
 import torch
 import transformers
