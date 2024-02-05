@@ -51,15 +51,25 @@ jobs:
           path: |
             . 
             !venv/
-
-  deploy:
+            
+  deploy-dependencies:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v3
+        with:
+          name: python-application
+          path: .
+          
+  deploy-app:
     permissions:
       contents: none
     runs-on: ubuntu-latest
-    needs: build
+    needs: [build, deploy-dependencies]
     environment:
       name: 'Development'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+      url: ${{ needs.deploy-dependencies.outputs.webapp-url }}
 
     steps:
       - name: Download artifact from build job
@@ -83,5 +93,4 @@ jobs:
         
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
-          # slot-name: 'Production'
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
