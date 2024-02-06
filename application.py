@@ -8,11 +8,15 @@ Created on Thu Jan 18 23:57:02 2024
 
 # Importer les bibliothèques nécessaires
 from flask import Flask, request, jsonify, render_template, session
+from dotenv import load_dotenv
+import os
 import torch
 import transformers
 from transformers import BertTokenizer 
 import joblib 
 import logging
+
+load_dotenv()
 
 # Charger le modèle et le tokenizer
 class BERTClass(torch.nn.Module):
@@ -45,7 +49,7 @@ logging.basicConfig(filename='app.log', level=logging.DEBUG)
 
 def create_app():
     my_app = Flask(__name__, template_folder='templates')
-    my_app.secret_key = "314159265**"
+    my_app.secret_key = os.getenv('SECRET_KEY')  # Accéder à la clé secrète à partir des variables d'environnement
     
     @my_app.route('/', methods=['GET', 'POST'])
     def home():
