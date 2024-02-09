@@ -22,16 +22,16 @@ jobs:
         with:
           python-version: '3.10'
 
-     # - name: Create and start virtual environment
-      #  run: |
-      #    python3 -m venv venv
-       #   source venv/bin/activate
+      - name: Create and start virtual environment
+        run: |
+          python -m venv antev
+          source antev/bin/activate
 
       - name: Install dependencies
         run: | 
           pip install --upgrade pip
           pip install -r requirements.txt
-          pip install torch
+          
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r
@@ -40,8 +40,9 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: python-app
-          path: release.zip
-            #!venv/
+          path: |
+            release.zip
+            !antev/
 
   deploy:
     runs-on: ubuntu-latest
