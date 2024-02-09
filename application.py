@@ -8,13 +8,13 @@ Created on Thu Jan 18 23:57:02 2024
 
 # Importer les bibliothèques nécessaires
 from flask import Flask, request, jsonify, render_template, session
-from dotenv import load_dotenv
-import os
+#from dotenv import load_dotenv
+#import os
 import torch
 import transformers
 from transformers import BertTokenizer 
 import joblib 
-import logging
+#import logging
 
 load_dotenv()
 
@@ -44,12 +44,13 @@ tokenizer = BertTokenizer.from_pretrained('bert_tokenizer', map_location=torch.d
 mlb = joblib.load('mlb_model.joblib')
 
 # Configurer la journalisation
-logging.basicConfig(filename='app.log', level=logging.DEBUG)
+#logging.basicConfig(filename='app.log', level=logging.DEBUG)
 
 
 def create_app():
     my_app = Flask(__name__, template_folder='templates')
-    my_app.secret_key = os.getenv('SECRET_KEY')  # Accéder à la clé secrète à partir des variables d'environnement
+    my_app.secret_key = "314159265**" 	
+    #my_app.secret_key = os.getenv('SECRET_KEY')  # Accéder à la clé secrète à partir des variables d'environnement
     
     @my_app.route('/', methods=['GET', 'POST'])
     def home():
@@ -63,7 +64,7 @@ def create_app():
             question = request.form['question']
             
             # Ajout des journaux pour suivre l'exécution
-            logging.info(f"Received question: {question}")
+            #logging.info(f"Received question: {question}")
             
             # Stocker la question dans la session Flask
             session['question'] = question
