@@ -22,10 +22,10 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Create and start virtual environment
-        run: |
-          python3 -m venv venv
-          source venv/bin/activate
+     # - name: Create and start virtual environment
+      #  run: |
+      #    python3 -m venv venv
+       #   source venv/bin/activate
 
       - name: Install dependencies
         run: | 
@@ -40,9 +40,8 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: python-app
-          path: |
-            release.zip
-            !venv/
+          path: release.zip
+            #!venv/
 
   deploy:
     runs-on: ubuntu-latest
