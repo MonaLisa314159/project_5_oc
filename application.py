@@ -8,7 +8,7 @@ Created on Thu Jan 18 23:57:02 2024
 
 # Importer les bibliothèques nécessaires
 from flask import Flask, request, jsonify, render_template, session
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 import os
 import torch
 import transformers
