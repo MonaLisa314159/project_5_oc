@@ -16,6 +16,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Récupère toutes les branches et tous les commits pour obtenir les fichiers LFS
+          lfs: true      # Active la prise en charge de Git LFS
 
       - name: Set up Python version
         uses: actions/setup-python@v1
